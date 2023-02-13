@@ -1,9 +1,9 @@
 --- 
-title: "Methodology for measuring and estimating funding to data and statistics"
-description: "Technical note for the Partner Report on Support to Statistics"
+title: "Brochure for estimating occupancy status using water consumption data"
+description: "Sucessful collaboration between INE Chile and PARIS21"
 author: 
   - Yu Tian, [PARIS21](https://paris21.org/about-paris21/our-team/yu-tian)
-  - Archita Misra, [PARIS21](https://www.paris21.org)
+  - Johannes Abele, [PARIS21](https://www.paris21.org)
 #date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 header-includes:
