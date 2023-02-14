@@ -1,9 +1,6 @@
 --- 
-title: "Brochure for estimating occupancy status using water consumption data"
-description: "Sucessful collaboration between INE Chile and PARIS21"
-author: 
-  - Yu Tian, [PARIS21](https://paris21.org/about-paris21/our-team/yu-tian)
-  - Johannes Abele, [PARIS21](https://www.paris21.org)
+title: "Brochure for the Data Science Collaboration between INE Chile and PARIS21"
+description: "Estimating the Occupancy Status of Dwellings using Water Consumption Data"
 #date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 header-includes:
@@ -12,13 +9,15 @@ header-includes:
   - \usepackage{float}
   - \hypersetup{colorlinks = true, urlcolor = cyan, citecolor = black, menucolor = black, anchorcolor = black, linkcolor=black}
 
-favicon: "P21_icon.ico"
+favicon: "ds_drop.ico"
 bibliography: Bibliography.bib
 link-citations: true
 keywords:
-  - PRESS
-  - Statistics
-  - 2022
+  - INE 
+  - PARIS21
+  - Data Science
+  - ONS 
+  - Data Science Accelerator 
 ---
 
 <!-- From gitbook to pdf:
@@ -32,16 +31,25 @@ From html to pdf 4 things change:
   4. Set pdf <- TRUE to hide code chunk output and adjust kable formating in Appendix
 -->
 
+
+
 ```{r setup, echo = F}
 pdf <- FALSE
 # Set code chunk output globally 
 if (pdf) knitr::opts_chunk$set(echo = F)
 ```
 
-# Acknowledgements {-}
+# Introduction {-}
 
-Draft  methodological  note  prepared  by  Yu  Tian  and  Archita  Misra  (PARIS21)  under  the  supervision  of  Rajiv 
-Ranjan (PARIS21). The authors are grateful to Eric Swanson and Lorenz Noe (Open Data Watch) and Simon Lange 
-(OECD)  for  their  valuable  review  and  feedback.  Further  comments  to  the  authors  (Yu.Tian@oecd.org; 
-Archita.misra@oecd.org) are welcome.
+This brochure aims at illustrating the of the collaboration between INE Chile and PARIS21 which took place from September to December 2022. It was initiated thanks to the [Data Science Accelerator program](https://datasciencecampus.ons.gov.uk/capability/international/international-data-science-accelerator-programme/what-is-the-international-data-science-accelerator-programme/) organized by the Office of National Statistics (ONS) of the United Kingdom. We are greatful for all the work that was put in by Nicolas Eduardo Guarda Hinostroza (INE Chile), Yu Tian (PARIS21) and Johannes Abele (PARIS21).
+
+```{js, echo = FALSE}
+title=document.getElementById('header');
+title.innerHTML = '<div class="hero-image-container"> <img class= "hero-image" src="./images/ds_stream.jpg"> </div> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>' + title.innerHTML
+```
+
+<!--
+top_cover_image <-  paste(readLines("top_cover_image.html"), collapse="\n")
+title.innerHTML = '<img src="./images/ds_stream_cropped.jpg" alt="top cover image">' + title.innerHTML
+-->
 

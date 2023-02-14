@@ -1,7 +1,7 @@
 /*--- LOGO ---*/
 
 .toc-logo {
-  width: 200px !important;
+  width: 280px !important;
   object-fit: contain;
   margin: 0 auto;
   display: block;
@@ -17,12 +17,23 @@
   height: auto !important; 
 }
 
-
 /*--- Sidebar ---*/
 
 .book .book-summary {
-  background: #f1f6f7;
+  background: #ddecffb1;
+  width: 330px;
+  position:absolute;
+  top:0;
+  left:-330px;
   border-right: none;
+}
+
+.book.with-summary .book-header.fixed {
+  left: 330px;
+}
+
+.book.with-summary .book-body {
+  left: 330px;
 }
 
 .book .book-summary ul.summary li a, 
@@ -31,19 +42,19 @@
   padding-bottom: 8px;
   padding-left: 15px;
   padding-right: 15px;
-  color: #2f5175;
+  color: #1e376d;
 }
 
 /* color when hovering */
 .summary a:hover {  
-  color: #f16e59 !important;
+  color: #35a89d !important;
 } 
 
 /* color for active links */
 .book .book-summary ul.summary li.active>a { /*active TOC links*/
-  color: #778ca5 !important;
+  color: #8395ac !important;
   border-left: solid 5px;
-  border-color: #1ca09f;
+  border-color: #1e376d;
   padding-left: 11px !important;
 }  
 
@@ -57,13 +68,37 @@
   margin-bottom: 0.85em; /* adds same amount of margin as a <p> would */
 }
 
+
+/* HERO IMAGE */
+
+.hero-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 300px;
+  background-color: #fefefe;
+}
+
+.hero-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+/*
+.page-inner {
+  padding-top: 400px !important;
+}
+*/
+
 /*_____ Boxes _____*/
 
 .emphbox {
   padding: 1em;
   background: #f1f6f7;
   color: rgb(17, 17, 17);
-  border: 2px solid rgba(216, 237, 247, 0.984)
+  border: 2px solid rgba(216, 237, 247, 0.984);
   border-radius: 10px;
 }
 .center {
