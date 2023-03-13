@@ -20,7 +20,7 @@
 /*--- Sidebar ---*/
 
 .book .book-summary {
-  background: #ddecffb1;
+  background: #eeeeeed7;
   width: 330px;
   position:absolute;
   top:0;
@@ -42,17 +42,17 @@
   padding-bottom: 8px;
   padding-left: 15px;
   padding-right: 15px;
-  color: #1e376d;
+  color: #14264d;
 }
 
 /* color when hovering */
 .summary a:hover {  
-  color: #35a89d !important;
+  color: #2bbeb0 !important;
 } 
 
 /* color for active links */
 .book .book-summary ul.summary li.active>a { /*active TOC links*/
-  color: #8395ac !important;
+  color: #9dbec7 !important;
   border-left: solid 5px;
   border-color: #1e376d;
   padding-left: 11px !important;
