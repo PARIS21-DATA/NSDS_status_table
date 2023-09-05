@@ -1,4 +1,4 @@
-book_filename: "PRESS_methodology_note"
+book_filename: "NSDS_status_table"
 output_dir: docs
 delete_merged_file: true
 edit: null
@@ -7,9 +7,10 @@ language:
   ui:
     chapter_name: ""
 rmd_files: [
-  "index.Rmd",
-  "01-Background.Rmd",
-  "02-Harmonizing-the-Data.Rmd",
-  "03-Model_Specification.Rmd",
-  "04-Results.Rmd"
+  "index.Rmd"
+  #,
+  #"01-Background.Rmd",
+  #"02-Harmonizing-the-Data.Rmd",
+  #"03-Model_Specification.Rmd",
+  #"04-Results.Rmd"
   ]

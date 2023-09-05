@@ -1,7 +1,7 @@
 /*--- LOGO ---*/
 
 .toc-logo {
-  width: 280px !important;
+  width: 200px !important;
   object-fit: contain;
   margin: 0 auto;
   display: block;
@@ -108,4 +108,11 @@
 div.csl-entry {
   clear: both;
   margin-bottom: 15px;
+}
+
+
+/*_____ Page Style _____*/
+
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1000px !important;
 }
