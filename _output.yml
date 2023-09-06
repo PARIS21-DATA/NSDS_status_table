@@ -21,8 +21,8 @@ bookdown::gitbook:
   url: https://paris21-data.github.io/DSA_Brochure_INE_P21
   includes: 
     in_header: hide_code.html
-bookdown::pdf_book:
-    keep_tex: true
+#bookdown::pdf_book:
+#    keep_tex: true
 
 
   #fontsettings:

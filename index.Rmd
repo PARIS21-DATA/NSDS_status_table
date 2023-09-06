@@ -51,12 +51,13 @@ The table is sorted by geographical region and provides information on existing 
 
 ```{js, echo = FALSE}
 title=document.getElementById('header');
-title.innerHTML = '<div class="hero-image-container"> <img class= "hero-image" src="./images/ds_stream.jpg"> </div> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>' + title.innerHTML
+title.innerHTML = '<div class="hero-image-container"> <img class= "hero-image" src="./images/stat_cap_cover.png"> </div> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>' + title.innerHTML
 ```
 
 ```{r, results='hide', echo=FALSE, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(kableExtra)
+library(readxl)
 ``` 
 
 <br>
@@ -65,16 +66,70 @@ library(kableExtra)
 
 
 ```{r, echo=FALSE, warning=FALSE}
+urls <- read_xlsx("./Data/Hyperlinks to NSDSs.xlsx") %>%
+  select(-"Name of the Plan")
+
 nsds_status <- readRDS("./Data/NSDS_Status_2023.RDS") %>% 
   select(-iso, -ida, -summary, -summary1, -summary2) %>%
+  left_join(urls, by = "Country") %>%
+  mutate(Name.of.the.Plan = ifelse(is.na(Hyperlinks), 
+                                   Name.of.the.Plan, 
+                                   paste0('<a href="', Hyperlinks, '" target="_blank">',Name.of.the.Plan,'</a>'))) %>%
   rename("Name of the Plan"=Name.of.the.Plan, 
          "Next Plan"=Next.Plan,
-         "Region"=Reg)
+         "Region"=Reg) %>%
+  select(-Hyperlinks)
+
+
+nsds_africa <- nsds_status %>%
+  filter(Region == "Africa") %>%
+  select(-Region) 
+nsds_asia_pacific <- nsds_status %>%
+  filter(Region == "Asia-Pacific") %>%
+  select(-Region)
+nsds_asia_pacific <- nsds_status %>%
+  filter(Region == "Asia-Pacific") %>%
+  select(-Region)
+nsds_europe <- nsds_status %>%
+  filter(Region == "Eastern Europe") %>%
+  select(-Region)
+nsds_america_caribbean <- nsds_status %>%
+  filter(Region == "Latin America and the Caribbean") %>%
+  select(-Region) 
+
 knitr::kable(
-  nsds_status, booktabs = TRUE,
-  caption = 'NSDS Status Table'
+  nsds_africa, "html", escape = FALSE, booktabs = TRUE,
+  caption = '<b>Africa</b>'
 ) %>%
-  kable_styling(full_width = F)
+  kable_styling(full_width = F, bootstrap_options = c("hover", "condensed"))
+
+```
+<br>
+<br>
+```{r, echo=FALSE, warning=FALSE}
+knitr::kable(
+  nsds_asia_pacific, "html", escape = FALSE, booktabs = TRUE,
+  caption = '<b>Asia-Pacific</b>'
+) %>%
+  kable_styling(full_width = F, bootstrap_options = c("hover", "condensed"))
+```
+<br>
+<br>
+```{r, echo=FALSE, warning=FALSE}
+knitr::kable(
+  nsds_europe,  "html", escape = FALSE,booktabs = TRUE, 
+  caption = '<b>Eastern Europe</b>'
+) %>%
+  kable_styling(full_width = F,bootstrap_options = c("hover", "condensed"))
+```
+<br>
+<br>
+```{r, echo=FALSE, warning=FALSE}
+knitr::kable(
+  nsds_america_caribbean,  "html", escape = FALSE,booktabs = TRUE,
+  caption = '<b>Latin America and the Caribbean</b>'
+) %>%
+  kable_styling(full_width = F, bootstrap_options = c("hover", "condensed"))
 ``` 
 
 <!--

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.8)  5 SEP 2023 10:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.8)  6 SEP 2023 10:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -481,7 +481,8 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count313
 \l__pdf_internal_box=\box73
-) (./NSDS_status_table.aux)
+)
+No file NSDS_status_table.aux.
 \openout1 = `NSDS_status_table.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
@@ -509,7 +510,6 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package hyperref Info: Link coloring ON on input line 98.
-(./NSDS_status_table.out) (./NSDS_status_table.out)
 \@outlinefile=\write3
 \openout3 = `NSDS_status_table.out'.
 
@@ -581,7 +581,8 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 100.
 (c:/Users/jojoa/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./NSDS_status_table.toc)
+)
+No file NSDS_status_table.toc.
 \tf@toc=\write4
 \openout4 = `NSDS_status_table.toc'.
 
@@ -595,33 +596,18 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 121.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 121.
-
-Overfull \hbox (786.60579pt too wide) in paragraph at lines 127--296
- [][] 
- []
-
-
-LaTeX Warning: Float too large for page by 1161.71147pt on input line 296.
-
-[1
-
-{c:/Users/jojoa/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] (./NSDS_status_table.aux)
-Package rerunfilecheck Info: File `NSDS_status_table.out' has not changed.
-(rerunfilecheck)             Checksum: A474652D77A632DF73EE3C02B557B71D;229.
- ) 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.131 ...ef="https://www.w3schools.com/" target="_
+                                                  blank">Visit W3Schools!</a... 
 Here is how much of TeX's memory you used:
- 14031 strings out of 477984
- 229139 string characters out of 5837742
- 1943382 words of memory out of 5000000
- 33964 multiletter control sequences out of 15000+600000
- 555045 words of font info for 71 fonts, out of 8000000 for 9000
+ 14007 strings out of 477984
+ 228725 string characters out of 5837742
+ 1853382 words of memory out of 5000000
+ 33959 multiletter control sequences out of 15000+600000
+ 552050 words of font info for 70 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,9n,76p,518b,439s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{c:/Users/jojoa/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{c:/Users/jojoa/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}<c:/Users/jojoa/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/jojoa/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/jojoa/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/jojoa/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb>
-Output written on NSDS_status_table.pdf (2 pages, 118934 bytes).
-PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
- 9 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 75i,9n,76p,518b,398s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
+!  ==> Fatal error occurred, no output PDF file produced!
