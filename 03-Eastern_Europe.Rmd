@@ -1,0 +1,7 @@
+# **Eastern Europe**
+
+```{r, echo=FALSE, warning=FALSE}
+knitr::kable(
+  nsds_europe,  "html", escape = FALSE,booktabs = TRUE) %>%
+  kable_styling(full_width = F,bootstrap_options = c("hover", "condensed")) 
+```

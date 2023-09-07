@@ -1,4 +1,4 @@
-tab:unnamed-chunk-3
-tab:unnamed-chunk-4
-tab:unnamed-chunk-5
-tab:unnamed-chunk-6
+africa
+asia-pacific
+eastern-europe
+latin-america-and-the-caribbean

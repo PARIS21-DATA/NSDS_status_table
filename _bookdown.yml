@@ -7,10 +7,9 @@ language:
   ui:
     chapter_name: ""
 rmd_files: [
-  "index.Rmd"
-  #,
-  #"01-Background.Rmd",
-  #"02-Harmonizing-the-Data.Rmd",
-  #"03-Model_Specification.Rmd",
-  #"04-Results.Rmd"
+  "index.Rmd",
+  "01-Africa.Rmd",
+  "02-Asia_Pacific.Rmd",
+  "03-Eastern_Europe.Rmd",
+  "04-Latin_America.Rmd"
   ]

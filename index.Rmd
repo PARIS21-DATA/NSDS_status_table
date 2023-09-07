@@ -41,7 +41,7 @@ if (pdf) knitr::opts_chunk$set(echo = F)
 
 # Progress report as of January 2023 {-}
 
-The following table presents the status of National Strategies for the Development of Statistics (NSDS) in International Development Association (IDA) borrower countries, Least Developed Countries, Low and Lower-Middle Income Countries, and some Upper-Middle Income Countries (in order to report on the whole of the African continent), as of January 2023. Non–IDA countries are identified in the table with an asterisk. The information is drawn from three principal sources:
+The following tables presents the status of National Strategies for the Development of Statistics (NSDS) in International Development Association (IDA) borrower countries, Least Developed Countries, Low and Lower-Middle Income Countries, and some Upper-Middle Income Countries (in order to report on the whole of the African continent), as of January 2023. Non–IDA countries are identified in the table with an asterisk. The information is drawn from three principal sources:
 
   - Direct information provided by countries to PARIS21;
   - Websites of key development partners (in particular the World Bank's Bulletin Board on Statistical Capacity); and 
@@ -96,41 +96,14 @@ nsds_europe <- nsds_status %>%
 nsds_america_caribbean <- nsds_status %>%
   filter(Region == "Latin America and the Caribbean") %>%
   select(-Region) 
+```
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-knitr::kable(
-  nsds_africa, "html", escape = FALSE, booktabs = TRUE,
-  caption = '<b>Africa</b>'
-) %>%
-  kable_styling(full_width = F, bootstrap_options = c("hover", "condensed"))
-
-```
-<br>
-<br>
-```{r, echo=FALSE, warning=FALSE}
-knitr::kable(
-  nsds_asia_pacific, "html", escape = FALSE, booktabs = TRUE,
-  caption = '<b>Asia-Pacific</b>'
-) %>%
-  kable_styling(full_width = F, bootstrap_options = c("hover", "condensed"))
-```
-<br>
-<br>
-```{r, echo=FALSE, warning=FALSE}
-knitr::kable(
-  nsds_europe,  "html", escape = FALSE,booktabs = TRUE, 
-  caption = '<b>Eastern Europe</b>'
-) %>%
-  kable_styling(full_width = F,bootstrap_options = c("hover", "condensed"))
-```
-<br>
-<br>
-```{r, echo=FALSE, warning=FALSE}
-knitr::kable(
-  nsds_america_caribbean,  "html", escape = FALSE,booktabs = TRUE,
-  caption = '<b>Latin America and the Caribbean</b>'
-) %>%
-  kable_styling(full_width = F, bootstrap_options = c("hover", "condensed"))
-``` 
 
 <!--
 top_cover_image <-  paste(readLines("top_cover_image.html"), collapse="\n")
