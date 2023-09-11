@@ -14,7 +14,7 @@ bookdown::gitbook:
         <li><a href="./">NSDS Status Table</a></li>
       after: |
         <li><a href="https\://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    download: [["NSDS_Summary_table.pdf", "PDF"]]
+    download: [["NSDS_Summary_Table.pdf", "PDF"]]
     info: no
     fontsettings:
       size: 2
