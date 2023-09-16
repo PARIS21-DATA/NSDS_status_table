@@ -60,6 +60,7 @@ library(kableExtra)
 library(readxl)
 library(downloadthis)
 library(bsplus)
+library(janitor)
 ``` 
 
 <br>
@@ -68,12 +69,161 @@ library(bsplus)
 
 
 ```{r, echo=FALSE, warning=FALSE}
-urls <- read_xlsx("./Data/Hyperlinks to NSDSs.xlsx") %>%
-  select(-"Name of the Plan")
+#urls <- read_xlsx("./Data/Hyperlinks to NSDSs.xlsx") %>%
+#  select(-"Name of the Plan")
 
-nsds_status <- readRDS("./Data/NSDS_Status_2023.RDS") %>% 
-  select(-iso, -ida, -summary, -summary1, -summary2) %>%
-  left_join(urls, by = "Country") 
+nsds_status <- read_xlsx("./Data/nsds_status_all_info.xlsx") 
+
+# Mannually correct entries
+nsds_status$summary2[nsds_status$summary2 == "being designed "] <- "being designed"
+nsds_status$summary2[nsds_status$summary2 == "being planned"] <- "planned"
+
+# ida countries
+summary_table_ida <- nsds_status %>%
+  filter(ida == 1) %>%
+  select(-iso, -ida) %>%
+  mutate(summary_status = case_when(
+    Status == "Implementation" ~ "Currently implementing a strategy", 
+    Status == "Completed, awaiting adoption" | Status == "Designing/Adopting" ~ "Currently designing a strategy or awaiting adoption",
+    summary == "expired with plan" ~ "Strategy expired or absent but currently planning an NSDS",
+    summary == "expired no plan" ~ "Strategy expired or absent and not planning one"
+  )) %>% 
+  group_by(Reg, summary_status) %>%
+  summarise(n = n()) %>% 
+  group_by(Reg) %>% 
+  mutate(total_Reg = sum(n)) %>% 
+  ungroup() %>% 
+  mutate(percent_Reg = round(n/total_Reg*100, digits = 0)) %>%
+  group_by(summary_status) %>%
+  mutate(total_status = sum(n)) %>%
+  mutate(percent_Reg = paste0("(", as.character(percent_Reg), "%)"))
+
+names_df <- c(summary_table_ida$summary_status[2],
+              summary_table_ida$summary_status[1],
+              summary_table_ida$summary_status[4],
+              summary_table_ida$summary_status[3])
+summary_table_ida_horizontal <- data.frame(a= as.character(),
+                                           b=as.character(),
+                                           c=as.character(),
+                                           d=as.character())
+names(summary_table_ida_horizontal) <- names_df
+
+for (region in c("Africa", "Asia-Pacific", "Eastern Europe", "Latin America and the Caribbean")){
+  print(region)
+  tmp <- summary_table_ida %>% 
+    filter(Reg==region) %>% 
+    select(-Reg) %>% 
+    t %>% 
+    as.data.frame %>% 
+    row_to_names(row_number = 1)
+  tmp$Reg <- region
+  
+  summary_table_ida_horizontal <- summary_table_ida_horizontal %>% 
+    bind_rows(tmp[c("n", "percent_Reg"),])
+}
+
+totals_region <- summary_table_ida %>%
+  select(Reg, total_Reg) %>%
+  group_by(Reg) %>% 
+  summarise(Total = max(total_Reg)) %>% 
+  mutate(Total = as.character(Total))
+
+totals_status <- summary_table_ida %>%
+  select(summary_status, total_status) %>%
+  group_by(summary_status) %>% 
+  summarise(Total = max(total_status)) %>% 
+  t %>% 
+  as.data.frame %>% 
+  row_to_names(row_number = 1)
+
+totals_status <- totals_status %>%
+  cbind(Total = rowSums(totals_status %>% mutate_each(funs(if(is.character(.)) as.numeric(.) else .)))) %>%
+  mutate(Total = as.character(Total)) %>%
+  mutate(Reg = "Total")
+
+summary_table_ida_horizontal <- summary_table_ida_horizontal %>%
+  group_by(Reg) %>% 
+  summarise_all(funs(trimws(paste(., collapse = ' ')))) %>%
+  mutate_all(funs(str_replace(., "NA NA", "0 (0%)"))) %>% 
+  left_join(totals_region) %>% 
+  rbind(totals_status) %>% 
+  rename(Region = Reg)
+
+# Non-ida countries
+summary_table_non_ida <- nsds_status %>%
+  filter(ida == 0) %>%
+  select(-iso, -ida) %>%
+  mutate(summary_status = case_when(
+    Status == "Implementation" ~ "Currently implementing a strategy", 
+    Status == "Completed, awaiting adoption" | Status == "Designing/Adopting" ~ "Currently designing a strategy or awaiting adoption",
+    summary == "expired with plan" ~ "Strategy expired or absent but currently planning an NSDS",
+    summary == "expired no plan" ~ "Strategy expired or absent and not planning one"
+  )) %>% 
+  group_by(Reg, summary_status) %>%
+  summarise(n = n()) %>% 
+  group_by(Reg) %>% 
+  mutate(total_Reg = sum(n)) %>% 
+  ungroup() %>% 
+  mutate(percent_Reg = round(n/total_Reg*100, digits = 0)) %>%
+  group_by(summary_status) %>%
+  mutate(total_status = sum(n)) %>%
+  mutate(percent_Reg = paste0("(", as.character(percent_Reg), "%)"))
+
+names_df <- c(summary_table_non_ida$summary_status[2],
+              summary_table_non_ida$summary_status[1],
+              summary_table_non_ida$summary_status[4],
+              summary_table_non_ida$summary_status[3])
+summary_table_non_ida_horizontal <- data.frame(a= as.character(),
+                                           b=as.character(),
+                                           c=as.character(),
+                                           d=as.character())
+names(summary_table_non_ida_horizontal) <- names_df
+
+for (region in c("Africa", "Asia-Pacific", "Eastern Europe", "Latin America and the Caribbean")){
+  print(region)
+  tmp <- summary_table_non_ida %>% 
+    filter(Reg==region) %>% 
+    select(-Reg) %>% 
+    t %>% 
+    as.data.frame %>% 
+    row_to_names(row_number = 1)
+  tmp$Reg <- region
+  
+  summary_table_non_ida_horizontal <- summary_table_non_ida_horizontal %>% 
+    bind_rows(tmp[c("n", "percent_Reg"),])
+}
+
+totals_region <- summary_table_non_ida %>%
+  select(Reg, total_Reg) %>%
+  group_by(Reg) %>% 
+  summarise(Total = max(total_Reg)) %>% 
+  mutate(Total = as.character(Total))
+
+totals_status <- summary_table_non_ida %>%
+  select(summary_status, total_status) %>%
+  group_by(summary_status) %>% 
+  summarise(Total = max(total_status)) %>% 
+  t %>% 
+  as.data.frame %>% 
+  row_to_names(row_number = 1)
+
+totals_status <- totals_status %>%
+  cbind(Total = rowSums(totals_status %>% mutate_each(funs(if(is.character(.)) as.numeric(.) else .)))) %>%
+  mutate(Total = as.character(Total)) %>%
+  mutate(Reg = "Total")
+
+summary_table_non_ida_horizontal <- summary_table_non_ida_horizontal %>%
+  group_by(Reg) %>% 
+  summarise_all(funs(trimws(paste(., collapse = ' ')))) %>%
+  mutate_all(funs(str_replace(., "NA NA", "0 (0%)"))) %>% 
+  left_join(totals_region) %>% 
+  rbind(totals_status) %>% 
+  rename(Region = Reg)
+
+
+# Prepare nsds status for Region tables
+nsds_status <- nsds_status %>%
+  select(-iso, -ida, -summary, -summary1, -summary2) 
 
 nsds_status_for_download <- nsds_status 
 
@@ -84,7 +234,9 @@ nsds_status <- nsds_status %>%
   rename("Name of the Plan"=Name.of.the.Plan, 
          "Next Plan"=Next.Plan,
          "Region"=Reg) %>%
-  select(-Hyperlinks)
+  select(-Hyperlinks) 
+
+nsds_status[is.na(nsds_status)] <- ""  
 
 
 nsds_africa <- nsds_status %>%

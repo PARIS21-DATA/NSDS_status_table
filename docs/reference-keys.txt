@@ -2,3 +2,4 @@ africa
 asia-pacific
 eastern-europe
 latin-america-and-the-caribbean
+summary-tables

@@ -11,5 +11,6 @@ rmd_files: [
   "01-Africa.Rmd",
   "02-Asia_Pacific.Rmd",
   "03-Eastern_Europe.Rmd",
-  "04-Latin_America.Rmd"
+  "04-Latin_America.Rmd",
+  "05-Summary_tables.Rmd"
   ]
