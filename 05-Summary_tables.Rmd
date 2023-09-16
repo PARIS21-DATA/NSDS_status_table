@@ -1,4 +1,4 @@
-# **Summary Tables**
+# Summary Tables
 
 
 <br>
@@ -8,7 +8,9 @@
 ```{r,  echo=FALSE}
 summary_table_ida_horizontal %>% 
   knitr::kable("html", escape = FALSE, booktabs = TRUE) %>% 
-  kable_styling(full_width = F, bootstrap_options = c("hover", "condensed"))  
+  kable_styling(full_width = F, bootstrap_options = c("hover", "condensed")) %>%
+  column_spec(6, bold = T, background = "#ffd037") %>% 
+  row_spec(5, bold = T, background = "#ffd037")
   #mutate_all(~cell_spec(.x, background = case_when(.x == "Expired" ~ "red")
   #cell_spec(which(nsds_africa$Status == "Expired"), bold = T, color = "white", background = "red") %>%
 ```
@@ -21,7 +23,7 @@ summary_table_ida_horizontal %>%
 ```{r,  echo=FALSE}
 summary_table_non_ida_horizontal %>% 
   knitr::kable("html", escape = FALSE, booktabs = TRUE) %>% 
-  kable_styling(full_width = F, bootstrap_options = c("hover", "condensed"))  
-  #mutate_all(~cell_spec(.x, background = case_when(.x == "Expired" ~ "red")
-  #cell_spec(which(nsds_africa$Status == "Expired"), bold = T, color = "white", background = "red") %>%
+  kable_styling(full_width = F, bootstrap_options = c("hover", "condensed")) %>%
+  column_spec(6, bold = T, background = "#ffd037") %>% 
+  row_spec(5, bold = T, background = "#ffd037")
 ```

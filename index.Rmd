@@ -68,7 +68,7 @@ library(janitor)
 <br>
 
 
-```{r, echo=FALSE, warning=FALSE}
+```{r, echo=FALSE, warning=FALSE, results='hide',  message=FALSE}
 #urls <- read_xlsx("./Data/Hyperlinks to NSDSs.xlsx") %>%
 #  select(-"Name of the Plan")
 
