@@ -117,6 +117,8 @@ div.csl-entry {
   max-width: 800px !important;
 }
 
+table {overflow-x: scroll}
+
 
 /*_____ Download Button (downloadthis) _____*/
 
