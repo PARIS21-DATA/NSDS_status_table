@@ -9,8 +9,10 @@
 summary_table_ida_horizontal %>% 
   knitr::kable("html", escape = FALSE, booktabs = TRUE) %>% 
   kable_styling(full_width = F, bootstrap_options = c("hover", "condensed")) %>%
+  column_spec(2:5, background = "#37dbd5") %>%
   column_spec(6, bold = T, background = "#ffd037") %>% 
-  row_spec(5, bold = T, background = "#ffd037")
+  row_spec(5, bold = T, background = "#ffd037") %>%
+  column_spec(1, background = "#ffffff") 
   #mutate_all(~cell_spec(.x, background = case_when(.x == "Expired" ~ "red")
   #cell_spec(which(nsds_africa$Status == "Expired"), bold = T, color = "white", background = "red") %>%
 ```
@@ -24,6 +26,8 @@ summary_table_ida_horizontal %>%
 summary_table_non_ida_horizontal %>% 
   knitr::kable("html", escape = FALSE, booktabs = TRUE) %>% 
   kable_styling(full_width = F, bootstrap_options = c("hover", "condensed")) %>%
+  column_spec(2:5, background = "#37dbd5") %>%
   column_spec(6, bold = T, background = "#ffd037") %>% 
-  row_spec(5, bold = T, background = "#ffd037")
+  row_spec(5, bold = T, background = "#ffd037") %>%
+  column_spec(1, background = "#ffffff") 
 ```

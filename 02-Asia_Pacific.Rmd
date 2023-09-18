@@ -1,8 +1,25 @@
 # **Asia-Pacific**
 
+```{r,  echo=FALSE}
+nsds_status_for_download %>% 
+  download_this(
+    output_name = "nsds_status_table",
+    output_extension = ".xlsx",
+    button_label = "Download full data as xlsx",
+    button_type = "primary",
+    has_icon = TRUE,
+    icon = "fa fa-save",
+    class = "hvr-sweep-to-left"
+  )
+```
+
+<br>
+
 ```{r, echo=FALSE, warning=FALSE}
-knitr::kable(
-  nsds_asia_pacific, "html", escape = FALSE, booktabs = TRUE) %>%
-  kable_styling(full_width = F, bootstrap_options = c("hover", "condensed")) %>% 
- scroll_box(width = "800px", height = "1200px")
+nsds_asia_pacific %>% 
+  mutate(Status = ifelse(Status == "Expired", cell_spec("Expired", bold = T, color = "white", background = "FireBrick"), 
+                         ifelse(Status == "Implementation", cell_spec("Implementation", bold = T, color = "white", background = "SeaGreen"),
+                                ifelse(Status == "Completed, awaiting adoption", cell_spec("Completed, awaiting adoption", bold = T, color = "white", background = "DarkMagenta"), Status)))) %>%
+  knitr::kable("html", escape = FALSE, booktabs = TRUE) %>% 
+  kable_styling(full_width = F, bootstrap_options = c("hover", "condensed")) 
 ```
