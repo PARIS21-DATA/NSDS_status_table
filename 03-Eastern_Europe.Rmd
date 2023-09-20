@@ -1,10 +1,26 @@
 # **Eastern Europe**
 
+```{r,  echo=FALSE}
+nsds_status_for_download %>% 
+  download_this(
+    output_name = "nsds_status_table",
+    output_extension = ".xlsx",
+    button_label = "Download full data as xlsx",
+    button_type = "primary",
+    has_icon = TRUE,
+    icon = "fa fa-save",
+    class = "hvr-sweep-to-left"
+  )
+```
+<br>
+
 ```{r, echo=FALSE, warning=FALSE}
 nsds_europe %>%
-  mutate(Status = ifelse(Status == "Expired", cell_spec("Expired", bold = T, color = "white", background = "FireBrick"), 
-                         ifelse(Status == "Implementation", cell_spec("Implementation", bold = T, color = "white", background = "SeaGreen"),
-                                ifelse(Status == "Completed, awaiting adoption", cell_spec("Completed, awaiting adoption", bold = T, color = "white", background = "DarkMagenta"), Status)))) %>%
+  mutate(Status = case_when(
+    Status == "Expired" ~ cell_spec("Expired", bold = T, color = "white", background = "FireBrick"),
+    Status == "No Strategy" ~ cell_spec("No Strategy", bold = T, color = "white", background = "FireBrick"),
+    Status == "Implementation" ~ cell_spec("Implementation", bold = T, color = "white", background = "SeaGreen"),
+    Status == "Completed, awaiting adoption" ~ cell_spec("Completed, awaiting adoption", bold = T, color = "#f6f6f6", background = "  #6616c4"), .default = Status)) %>%
   knitr::kable("html", escape = FALSE, booktabs = TRUE) %>% 
   kable_styling(full_width = F, bootstrap_options = c("hover", "condensed")) 
 ```
