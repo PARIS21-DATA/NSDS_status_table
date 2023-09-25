@@ -34,4 +34,5 @@ nsds_africa %>%
   #cell_spec(which(nsds_africa$Status == "Expired"), bold = T, color = "white", background = "red") %>%
 ```
 </div>
+
 \* indicates non-IDA borrowing country
