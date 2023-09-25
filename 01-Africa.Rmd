@@ -15,6 +15,8 @@ nsds_status_for_download %>%
 ```
 
 <br>
+<!-- add overflow container for mobile horizontal scrolling --> 
+<div style='overflow-x:auto'>
 
 ```{r,  echo=FALSE}
 nsds_africa %>% 
@@ -24,9 +26,10 @@ nsds_africa %>%
     Status == "Implementation" ~ cell_spec("Implementation", bold = T, color = "white", background = "SeaGreen"),
     Status == "Completed, awaiting adoption" ~ cell_spec("Completed, awaiting adoption", bold = T, color = "#f6f6f6", background = "  #6616c4"), .default = Status)) %>%
   knitr::kable("html", escape = FALSE, booktabs = TRUE) %>% 
-  kable_styling(full_width = F, bootstrap_options = c("hover", "condensed")) %>% 
-  scroll_box(width = "800px")
+  kable_styling(full_width = F, bootstrap_options = c("hover", "condensed")) #%>% 
+  #scroll_box(width = "800px")
   #column_spec(2, color = ifelse(nsds_africa$Status == "Expired", "red", "white")) %>%
   #mutate_all(~cell_spec(.x, background = case_when(.x == "Expired" ~ "red")
   #cell_spec(which(nsds_africa$Status == "Expired"), bold = T, color = "white", background = "red") %>%
 ```
+</div>

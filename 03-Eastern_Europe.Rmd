@@ -14,6 +14,9 @@ nsds_status_for_download %>%
 ```
 <br>
 
+<!-- add overflow container for mobile horizontal scrolling --> 
+<div style='overflow-x:auto'>
+
 ```{r, echo=FALSE, warning=FALSE}
 nsds_europe %>%
   mutate(Status = case_when(
@@ -24,3 +27,4 @@ nsds_europe %>%
   knitr::kable("html", escape = FALSE, booktabs = TRUE) %>% 
   kable_styling(full_width = F, bootstrap_options = c("hover", "condensed")) 
 ```
+</div>
