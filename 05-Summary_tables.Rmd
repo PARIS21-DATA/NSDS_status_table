@@ -5,6 +5,8 @@
 
 ## Summary table of NSDS status in IDA borrowing countries {-}
 
+<!-- add overflow container for mobile horizontal scrolling --> 
+<div style='overflow-x:auto'>
 ```{r,  echo=FALSE}
 summary_table_ida_horizontal %>% 
   knitr::kable("html", escape = FALSE, booktabs = TRUE) %>% 
@@ -16,12 +18,14 @@ summary_table_ida_horizontal %>%
   #mutate_all(~cell_spec(.x, background = case_when(.x == "Expired" ~ "red")
   #cell_spec(which(nsds_africa$Status == "Expired"), bold = T, color = "white", background = "red") %>%
 ```
+</div>
 
 <br>
 
 ## Summary table of NSDS status in all other countries included in this table* {-}
 
-
+<!-- add overflow container for mobile horizontal scrolling --> 
+<div style='overflow-x:auto'>
 ```{r,  echo=FALSE}
 summary_table_non_ida_horizontal %>% 
   knitr::kable("html", escape = FALSE, booktabs = TRUE) %>% 
@@ -31,3 +35,4 @@ summary_table_non_ida_horizontal %>%
   row_spec(5, bold = T, background = "#ffd037") %>%
   column_spec(1, background = "#ffffff") 
 ```
+</div>

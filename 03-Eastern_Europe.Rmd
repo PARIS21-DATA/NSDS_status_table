@@ -28,3 +28,5 @@ nsds_europe %>%
   kable_styling(full_width = F, bootstrap_options = c("hover", "condensed")) 
 ```
 </div>
+
+\* indicates non-IDA borrowing country

@@ -29,5 +29,6 @@ nsds_asia_pacific %>%
   knitr::kable("html", escape = FALSE, booktabs = TRUE) %>% 
   kable_styling(full_width = F, bootstrap_options = c("hover", "condensed")) 
 ```
-
 </div>
+
+\* indicates non-IDA borrowing country

@@ -15,6 +15,7 @@ nsds_status_for_download %>%
 ```
 
 <br>
+
 <!-- add overflow container for mobile horizontal scrolling --> 
 <div style='overflow-x:auto'>
 
@@ -33,3 +34,4 @@ nsds_africa %>%
   #cell_spec(which(nsds_africa$Status == "Expired"), bold = T, color = "white", background = "red") %>%
 ```
 </div>
+\* indicates non-IDA borrowing country
