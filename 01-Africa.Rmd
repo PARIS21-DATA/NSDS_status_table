@@ -19,13 +19,24 @@ nsds_status_for_download %>%
 <!-- add overflow container for mobile horizontal scrolling --> 
 <div style='overflow-x:auto'>
 
-```{r,  echo=FALSE}
+```{r,  echo=FALSE, warning=FALSE}
+pattern_to_match_last2digit <- "\\d{2}(?=[^\\d]*$)"
+current_year <- str_extract(format(Sys.Date(), "%Y"), pattern_to_match_last2digit)
+year_plus_2 <- as.character(as.numeric(current_year) + 2)
+year_plus_4 <- as.character(as.numeric(current_year) + 4)
+
 nsds_africa %>% 
   mutate(Status = case_when(
     Status == "Expired" ~ cell_spec("Expired", bold = T, color = "white", background = "FireBrick"),
     Status == "No Strategy" ~ cell_spec("No Strategy", bold = T, color = "white", background = "FireBrick"),
     Status == "Implementation" ~ cell_spec("Implementation", bold = T, color = "white", background = "SeaGreen"),
     Status == "Completed, awaiting adoption" ~ cell_spec("Completed, awaiting adoption", bold = T, color = "#f6f6f6", background = "  #6616c4"), .default = Status)) %>%
+  mutate(Range = case_when(
+    str_extract(Range, pattern_to_match_last2digit) < current_year ~ cell_spec(Range, bold = T, color = "white", background = "FireBrick"),
+    current_year <= str_extract(Range, pattern_to_match_last2digit) & str_extract(Range, pattern_to_match_last2digit) <= year_plus_2 ~ cell_spec(Range, bold = T, color = "white", background = "#e67e22"),
+    year_plus_2 < str_extract(Range, pattern_to_match_last2digit) & str_extract(Range, pattern_to_match_last2digit) <= year_plus_4 ~ cell_spec(Range, bold = T, color = "white", background = "#f1c40f"),
+    year_plus_4 < str_extract(Range, pattern_to_match_last2digit)  ~ cell_spec(Range, bold = T, color = "white", background = "#1e8449"),
+     .default = Range)) %>%
   knitr::kable("html", escape = FALSE, booktabs = TRUE) %>% 
   kable_styling(full_width = F, bootstrap_options = c("hover", "condensed")) #%>% 
   #scroll_box(width = "800px")
@@ -36,3 +47,18 @@ nsds_africa %>%
 </div>
 
 \* indicates non-IDA borrowing country
+
+<br> 
+```{r,  echo=FALSE, warning=FALSE}
+color_codes <- data.frame(meaning = c("Already Expired", "Soon to Expire", "Midterm Implementation", "Longterm Implementation"))
+
+color_codes %>%
+  mutate(meaning = case_when(
+    meaning == "Already Expired" ~ cell_spec("Already Expired", bold = T, color = "white", background = "FireBrick"),
+    meaning == "Soon to Expire" ~ cell_spec("Soon to Expire", bold = T, color = "white", background = "#e67e22"),
+    meaning == "Midterm Implementation" ~ cell_spec("Midterm Implementation", bold = T, color = "white", background = "#f1c40f"),
+    meaning == "Longterm Implementation" ~ cell_spec("Longterm Implementation", bold = T, color = "#f6f6f6", background = "  #1e8449"), .default = meaning)) %>%
+  rename("Color codes" = meaning) %>%
+  knitr::kable("html", escape = FALSE, booktabs = TRUE) %>% 
+  kable_styling(full_width = F, bootstrap_options = c("hover", "condensed"), position = "left")
+```

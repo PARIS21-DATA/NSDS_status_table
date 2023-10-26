@@ -228,6 +228,7 @@ nsds_status <- nsds_status %>%
 nsds_status_for_download <- nsds_status 
 
 nsds_status <- nsds_status %>%
+  mutate(Range=ifelse(Country == "Botswana*", Range, str_replace_all(Range, fixed(" "), ""))) %>%
   mutate(Name.of.the.Plan = ifelse(is.na(Hyperlinks), 
                                    Name.of.the.Plan, 
                                    paste0('<a href="', Hyperlinks, '" target="_blank">',Name.of.the.Plan,'</a>'))) %>%
